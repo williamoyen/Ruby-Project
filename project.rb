@@ -29,6 +29,7 @@ class Company
     @numDepartments += num
   end
   
+  #overrides the to_s method for the company class
   def to_s
     puts "Company Name: #{@companyName}"
     puts "Number of Employees: #{@numEmployees}"
@@ -64,6 +65,7 @@ class Department < Company
     return @size 
   end
 
+   #overrides the to_s method for the department class
   def to_s
     puts "Department Id: #{@departmentId}"
     puts "Department Name: #{@departmentName}"
@@ -126,6 +128,7 @@ class Employee < Department
     return @salary
   end
 
+   #overrides the to_s method for the employee class
   def to_s
     puts "Employee Id: #{@employeeId}"
     puts "Name: #{@name}"
@@ -137,6 +140,8 @@ class Employee < Department
 
 end#Ends Employee Class
 
+
+#Displays a menu to the user for them to choose what they want to do
 def menu
   puts("1. Create new Department")
   puts("2. Create new Employee")
@@ -148,6 +153,8 @@ def menu
   return choice
 end
 
+#Function to create a department based on user input
+#It creates a department object and returns it
 def createDepartment()
   print("Enter Department Id: ")
   tempId = gets.chomp
@@ -160,6 +167,8 @@ def createDepartment()
   return department
 end
 
+#Function to create an employee based on user input
+#It creates a employee object and returns it
 def createEmployee()
   print("Enter Employee Id: ")
   tempId = gets.chomp
@@ -178,6 +187,9 @@ def createEmployee()
   return employee
 end
 
+#Function to edit a department based on user input
+#It searches for the department based on id
+#Inputs: the depArray
 def editDepartment(depArray)
   puts("1. Edit Department Name")
   puts("2. Edit Department Size")
@@ -218,6 +230,9 @@ def editDepartment(depArray)
   end
 end #closes editDepartment function 
 
+#Function to edit an employee based on user input
+#It searches for the employee based on id
+#Inputs: the empArray
 def editEmployee(empArray)
 
   print("Enter Employee Id: ")
@@ -298,6 +313,8 @@ def editEmployee(empArray)
   end# Ends case
 end #Ends editEmployee function 
 
+#Function to print all department info to file
+#Inputs: the depArray
 def printDepartments(depArray)
   depFile = File.open("departments.txt", "w")
   for item in depArray
@@ -310,6 +327,8 @@ def printDepartments(depArray)
   depFile.close()
 end
 
+#Function to print all employee info to file
+#Inputs: the empArray
 def printEmployees(empArray)
   empFile = File.open("employees.txt", "w")
   for item in empArray
@@ -324,6 +343,8 @@ def printEmployees(empArray)
   empFile.close()
 end
 
+#Function to print all info to file
+#Inputs: comp object, depArray, empArray
 def printAll(comp, depArray, empArray)
 
   comFile = File.open("company.txt", "w")
